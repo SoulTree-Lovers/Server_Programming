@@ -1,8 +1,12 @@
 # 1. 사용자로 부터 comma seprated 입력 문자열을 받아서, list와 tuple을 만들어 출력하시오
 
 #  coding here
+string = input("Input some comma separated numbers : ").split(',')
+comma_separated_string_to_list = list(string)
+comma_separated_string_to_tuple = tuple(string)
 
-
+print(comma_separated_string_to_list)
+print(comma_separated_string_to_tuple)
 # Console Output
 # ---------------------------------------------
 # Input some comma seprated numbers : 3,5,7,23
@@ -14,7 +18,12 @@
 #    예를 들면, 입력숫자가 5인 경우 5+55+555로 계산되어 615값을 출력함
 
 #  coding here
+n = input("Input an integer : ")
+n1 = int(n)
+n2 = int(n+n)
+n3 = int(n+n+n)
 
+print(n1+n2+n3)
 
 
 # Console Output
@@ -35,7 +44,11 @@ numbers = [
 
 
 #  coding here
-
+for num in numbers:
+    if num == 237:
+        break
+    if num % 2 == 0:
+        print(num)
 
 # Console Output
 # ---------------------------------------------
@@ -59,8 +72,15 @@ numbers = [
 # input string
 def char_frequency(str1):
     # coding here (pass 명령어를 제거하고 coding 할 것)
-    pass
+    char_dict = dict()
 
+    for i in str1:
+        if i not in char_dict:
+            char_dict[i] = 1
+        else:
+            char_dict[i] += 1
+    
+    return char_dict
 
 print(char_frequency('google.com'))
 
@@ -77,7 +97,7 @@ my_list = [10, 20, 30, 40, 20, 50, 60, 40]
 
 
 #  coding here
-
+print(list(set(my_list)))
 
 # Console Output
 # ---------------------------------------------
@@ -87,13 +107,15 @@ my_list = [10, 20, 30, 40, 20, 50, 60, 40]
 
 # 6. 다음 input dictionary 변수들을 합쳐서 새로운 dictionary로 만든 후 출력하시오
 
-
 #  coding here
 dic1={1:10, 2:20}
 dic2={3:30, 4:40}
 dic3={5:50,6:60}
 
+dic1.update(dic2)
+dic1.update(dic3)
 
+print(dic1)
 
 # Console Output
 # ---------------------------------------------
@@ -105,8 +127,14 @@ dic3={5:50,6:60}
 
 
 #  coding here
+num_dic = dict()
 
+n = int(input("Input an integer : "))
 
+for i in range(1, n+1):
+    num_dic[i] = i*i
+
+print(num_dic)
 # Console Output
 # ---------------------------------------------
 # Input an integer : 10
@@ -120,6 +148,7 @@ dic3={5:50,6:60}
 #  coding here
 tup = ('e', 'x', 'e', 'r', 'c', 'i', 's', 'e', 's')
 
+print("".join(tup))
 
 # Console Output
 # ---------------------------------------------
@@ -134,7 +163,9 @@ tup = ('e', 'x', 'e', 'r', 'c', 'i', 's', 'e', 's')
 setx = set(["green", "blue"])
 sety = set(["blue", "yellow"])
 
+setx |= sety
 
+print(setx)
 
 # Console Output
 # ---------------------------------------------
@@ -150,8 +181,7 @@ input_list = [(2, 5), (1, 2), (4, 4), (2, 3), (2, 1)]
 
 def sort_list_last(tuples):
     # coding here (pass 명령어를 제거하고 coding 할 것)
-    pass
-
+    return sorted(tuples, key=lambda x : x[1])
 
 print(sort_list_last(input_list))
 
