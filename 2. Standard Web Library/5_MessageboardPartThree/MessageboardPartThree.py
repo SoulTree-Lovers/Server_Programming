@@ -10,6 +10,15 @@
 #    ==> redirect할 때 default method가 GET이기 때문에 do_GET call함
 # 3. do_GET이 불려지면 textarea에서 입력되고 submit된 데이터 리스트가 보여짐
 
+# 1. Get: login 입력 화면을 나타냄.
+# 2. login 입력화면에서 id, pw 입력 -> 전송 버튼 누르면 POST 방식으로 전달
+# 3. 서버에서는 id, pw(DBMS table)를 체크하고 
+#    -> 맞다면 main 화면으로 GET 방식으로 redirect
+#    -> 틀리다면 틀렸다는 내용을 포함한 login 입력화면이 redirect를 사용하여 다시 display됨
+
+
+
+
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import parse_qs
 
@@ -38,7 +47,8 @@ class MessageHandler(BaseHTTPRequestHandler):
         message = parse_qs(data)["message"][0]
 
         # Escape HTML tags in the message so users can't break world+dog.
-        message = message.replace("<", "&lt;")
+        # <를 &lt로 처리하여 html tag로 인식하지 않음. -> 해킹 방지를 위함.
+        message = message.replace("<", "&lt;") 
 
         # Store it in memory. memory 변수의 data type : list
         memory.append(message)
@@ -48,7 +58,8 @@ class MessageHandler(BaseHTTPRequestHandler):
         # 1. server가 303을 인식하면, client인 web browser로 보내는 것이 아니라
         #    Location으로 지정된 server 주소로 다시 재전송됨
         # 2. redirect할 때는 response body에 데이터를 넣지 않음
-        self.send_response(303)
+        self.send_response(303) # do_Get을 다시 실행
+
         # Location이 '/'라는 의미는 root 주소를 말함, 즉 localhost:8000/을 말함
         self.send_header('Location', '/')
         self.end_headers()

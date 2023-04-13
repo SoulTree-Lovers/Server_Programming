@@ -19,6 +19,7 @@ form = '''<!DOCTYPE html>
 
 
 class MessageHandler(BaseHTTPRequestHandler):
+    # POST 방식 처리
     def do_POST(self):
         # How long was the message?
         length = int(self.headers.get('Content-length', 0))
@@ -31,10 +32,13 @@ class MessageHandler(BaseHTTPRequestHandler):
 
         # Send the "message" field back as the response.
         self.send_response(200)
+        # text/plain 대신 text/html을 넣으면 html형식으로 읽음.
         self.send_header('Content-type', 'text/plain; charset=utf-8')
         self.end_headers()
         self.wfile.write(message.encode())
 
+    # Part One에 Get 메소드가 추가됨.
+    # Get 방식 처리
     def do_GET(self):
         # First, send a 200 OK response.
         self.send_response(200)

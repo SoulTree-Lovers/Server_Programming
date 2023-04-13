@@ -7,6 +7,11 @@ from http import cookies
 from urllib.parse import parse_qs
 from html import escape as html_escape
 
+# http protocol: stateless (상태관리를 하지 않음(못함))
+
+# 통신 전용 선: 기업에서 구매 (한 번 로그인하면 24시간 접속이 끊기지 않음.) -> 서버에서 관리할 수 있음.
+# 인터넷 network(http protocol): 돈을 내지 않음. 모든 사람이 공용으로 쓰기 때문에 누가 독점할 수 없음. -> 서버에서 관리할 수 없음.
+
 form = '''<!DOCTYPE html>
 <title>I Remember You</title>
 <p>
