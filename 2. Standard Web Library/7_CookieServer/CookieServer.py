@@ -34,11 +34,14 @@ class NameHandler(BaseHTTPRequestHandler):
 
         # Read and parse the post data
         data = self.rfile.read(length).decode()
+
+        # 여러 개의 yourname 중 첫 번째꺼 가져오기
         yourname = parse_qs(data)["yourname"][0]
 
         # Create cookie.
-        c = cookies.SimpleCookie()
-        c['yourname'] = yourname
+        # 쿠키는 수정할 수 없고 수정하려면 그냥 새로 생성하면 된다.
+        c = cookies.SimpleCookie()  
+        c['yourname'] = yourname    
         c['yourname']['domain'] = 'localhost'
         c['yourname']['max-age'] = 60
 

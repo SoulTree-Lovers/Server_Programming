@@ -10,6 +10,7 @@
 #    ==> redirect할 때 default method가 GET이기 때문에 do_GET call함
 # 3. do_GET이 불려지면 textarea에서 입력되고 submit된 데이터 리스트가 보여짐
 
+# 순서 설명
 # 1. Get: login 입력 화면을 나타냄.
 # 2. login 입력화면에서 id, pw 입력 -> 전송 버튼 누르면 POST 방식으로 전달
 # 3. 서버에서는 id, pw(DBMS table)를 체크하고 
