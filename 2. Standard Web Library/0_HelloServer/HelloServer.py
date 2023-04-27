@@ -22,7 +22,7 @@ class HelloHandler(BaseHTTPRequestHandler):
         
         # 3. response header 입력 종료
         self.end_headers()
-
+        
         # Now, write the response body.
         # self.wfile.write 메소드는 bytes data만 전송
         # encode() : string data를 utf-8 방식의 bytes로 변환하는 것을 말함
