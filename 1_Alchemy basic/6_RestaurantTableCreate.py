@@ -9,9 +9,10 @@ conn = pymysql.connect(host='localhost', user='root', password='root',
 curs = conn.cursor()
 
 # restaurant table create 실행
+# AUTO_INCREMENT는 자동으로 id 값을 채워줌.
 restaurant_sql = '''
 CREATE TABLE restaurant 
-(id int NOT NULL AUTO_INCREMENT, 
+(id int NOT NULL AUTO_INCREMENT,
  name varchar(250) NOT NULL,
  PRIMARY KEY (id))
 '''

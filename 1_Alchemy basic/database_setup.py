@@ -11,7 +11,7 @@ from sqlalchemy import create_engine
 
 
 # declarative_base() : Table 생성을 위한 부모 class인 Base 생성하는 함수
-Base = declarative_base()
+Base = declarative_base() 
 
 
 class Restaurant(Base):
@@ -22,7 +22,7 @@ class Restaurant(Base):
 
 
 class MenuItem(Base):
-    __tablename__ = 'menu_item'
+    __tablename__ = 'menu_item' # 테이블 이름 지정 (default는 클래스 이름인 MenuItem)
 
     name = Column(String(80), nullable=False)
     id = Column(Integer, primary_key=True)
@@ -35,6 +35,6 @@ class MenuItem(Base):
 
 ##### insert at end of file #####
 
-engine = create_engine('mysql+pymysql://root:root@localhost/restaurant')
+engine = create_engine('mysql+pymysql://root:root@localhost/restaurant') # restaurant은 데이터베이스 이름
 
 Base.metadata.create_all(engine)

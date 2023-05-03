@@ -24,7 +24,9 @@ session = DBSession()
 # Menu for UrbanBurger
 restaurant1 = Restaurant(name="Urban Burger")
 
+# add: insert into (메모리에만 적재, 하드디스크에는 x) 
 session.add(restaurant1)
+# commit: 커밋 시 하드디스크에 적재
 session.commit()
 
 menuItem1 = MenuItem(name="Veggie Burger", description="Juicy grilled veggie patty with tomato mayo and lettuce",

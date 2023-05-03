@@ -20,8 +20,9 @@ DBSession = sessionmaker(bind=engine)
 # session.rollback()
 session = DBSession()
 
-firstResult= session.query(Restaurant).first()
-print ("first restaurant = "+firstResult.name)
+# session.query(Restaurant) => select * from restaurant
+firstResult= session.query(Restaurant).first() # first() 첫 번째 레스토랑 인스턴스만 가져옴 (맞는 지 다시 확인해야 함)
+print ("first restaurant = " + firstResult.name + ", id = " + firstResult.id)
 print ("")
 
 # python lotsofmenus.py 실행후에,

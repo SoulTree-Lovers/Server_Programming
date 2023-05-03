@@ -20,6 +20,7 @@ DBSession = sessionmaker(bind=engine)
 # session.rollback()
 session = DBSession()
 
+# filter_by(): select와 같음 ?
 veggieBurgers= session.query(MenuItem).filter_by(name= 'Veggie Burger')
 for veggieBurger in veggieBurgers:
     print (veggieBurger.id)
