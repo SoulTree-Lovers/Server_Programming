@@ -3,7 +3,8 @@
 -- 여러 줄 실행: shift + command + enter
 
 CREATE DATABASE restaurant default CHARACTER SET UTF8;
-
+select * from restaurant;
+select * from menu_item;
 
 
 

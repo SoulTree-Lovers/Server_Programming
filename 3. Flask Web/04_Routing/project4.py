@@ -12,6 +12,7 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 # url : http://localhost/restaurants/1/
+# <int:restaurant_id> 대신 숫자를 넣으면 인덱싱할 수 있음! (해당 아이디의 식당 메뉴 출력)
 @app.route('/restaurants/<int:restaurant_id>/')
 # restaurant_id 변수에 값이 1이 들어옴
 def restaurantMenu(restaurant_id):

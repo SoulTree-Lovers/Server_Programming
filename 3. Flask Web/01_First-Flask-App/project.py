@@ -7,6 +7,7 @@ app = Flask(__name__)
 @app.route('/')
 # http://localhost/hello => path가 /hello인 url address
 @app.route('/hello')
+# http://localhost/world => path가 /world인 url address
 @app.route('/world')
 def HelloWorld():
     return "Hello World"
