@@ -10,7 +10,7 @@ curs = conn.cursor(pymysql.cursors.DictCursor)
 
 # SQL문 실행, %s : 문자열이든 숫자이든 %s 사용
 sql = "insert into customer (name, address, phone) values (%s, %s, %s)"
-curs.execute(sql, ('홍길동', '대한민국 홍대', '010-222-1112'))
+curs.execute(sql, ('홍길동', '대한민국 숭실대', '010-222-1112'))
 
 # 데이타 commit
 conn.commit();

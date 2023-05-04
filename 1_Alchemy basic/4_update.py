@@ -9,7 +9,7 @@ conn = pymysql.connect(host='localhost', user='root', password='root',
 curs = conn.cursor(pymysql.cursors.DictCursor)
 
 # SQL문 실행, %s : 문자열이든 숫자이든 %s 사용
-sql = "UPDATE customer SET address = '서울 숭실대' WHERE name = '홍길동'"
+sql = "UPDATE customer SET address = '서울 숭실대' WHERE custid >= '홍길동'"
 curs.execute(sql)
 
 # 데이타 commit

@@ -9,8 +9,8 @@ conn = pymysql.connect(host='localhost', user='root', password='root',
 curs = conn.cursor(pymysql.cursors.DictCursor)
 
 # SQL문 실행, %s : 문자열이든 숫자이든 %s 사용
-sql = "DELETE FROM customer WHERE name = '홍길동'"
-curs.execute(sql)
+sql = "DELETE FROM customer WHERE name = %s"
+curs.execute(sql, ('홍길동'))
 
 # 데이타 commit
 conn.commit();
