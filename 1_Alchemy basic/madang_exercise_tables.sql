@@ -2,6 +2,11 @@
 -- 1줄 실행: command + enter
 -- 여러 줄 실행: shift + command + enter
 
+CREATE DATABASE restaurant default CHARACTER SET UTF8;
+
+
+
+
 DROP DATABASE IF EXISTS madang;
 -- 데이터베이스를 생성하는 SQL 명령어
 CREATE DATABASE madang default CHARACTER SET UTF8;
