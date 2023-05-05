@@ -76,7 +76,9 @@ class MessageHandler(BaseHTTPRequestHandler):
         # Send the form with the messages in it.
         # format 메소드는 string instance안에 있는 것으로
         # form 문자열 안에 { } 자리에, "\n".join(memory)결과값이 들어감
-        table = """<table border = "1">
+
+        # table 테두리가 잘 보이도록 border = "1" 지정
+        table = """<table border="1">
         <th>ID</th>
         <th>Message</th>
         """
