@@ -44,6 +44,7 @@ def editMenuItem(restaurant_id, menu_id):
             editedItem.name = request.form['name']
         session.add(editedItem)
         session.commit()
+        # flash 함수를 사용하여 메시지 발생 (새로고침 시 사라짐)
         flash("Menu Item has been edited")
         return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
     else:

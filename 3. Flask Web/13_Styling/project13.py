@@ -13,6 +13,7 @@ session = DBSession()
 
 
 @app.route('/')
+# REST의 GET(select)방식을 표현
 @app.route('/restaurants/<int:restaurant_id>/menu')
 def restaurantMenu(restaurant_id):
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
@@ -20,7 +21,7 @@ def restaurantMenu(restaurant_id):
     return render_template(
         'menu.html', restaurant=restaurant, items=items, restaurant_id=restaurant_id)
 
-
+# REST의 POST(insert)방식을 표현
 @app.route('/restaurants/<int:restaurant_id>/new', methods=['GET', 'POST'])
 def newMenuItem(restaurant_id):
 
@@ -34,7 +35,7 @@ def newMenuItem(restaurant_id):
     else:
         return render_template('newmenuitem.html', restaurant_id=restaurant_id)
 
-
+# REST의 PUT(update)방식을 표현
 @app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/edit',
            methods=['GET', 'POST'])
 def editMenuItem(restaurant_id, menu_id):
@@ -52,6 +53,7 @@ def editMenuItem(restaurant_id, menu_id):
 
 
 # DELETE MENU ITEM SOLUTION
+# REST의 Delete(delete)방식을 표현
 @app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/delete',
            methods=['GET', 'POST'])
 def deleteMenuItem(restaurant_id, menu_id):
