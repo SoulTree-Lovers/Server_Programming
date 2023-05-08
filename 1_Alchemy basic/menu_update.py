@@ -20,7 +20,9 @@ DBSession = sessionmaker(bind=engine)
 # session.rollback()
 session = DBSession()
 
-# filter_by(): select와 같음 ?
+# filter_by(): select와 같음
+# query(MenuItem).filter_by(name = "Veggie Burger")
+# => select * from menu_item where name = "Veggie Burger";
 veggieBurgers= session.query(MenuItem).filter_by(name= 'Veggie Burger')
 for veggieBurger in veggieBurgers:
     print (veggieBurger.id)
@@ -28,9 +30,10 @@ for veggieBurger in veggieBurgers:
     print (veggieBurger.restaurant.name)
     print ("")
 
-ChickenBurger= session.query(MenuItem).filter_by(id=2).one()
-print (ChickenBurger.price)
+# => select * from menu_item where id = 3;
+ChickenBurger = session.query(MenuItem).filter_by(id=3).one()
+print ("ChickenBurger.price: ", ChickenBurger.price)
 ChickenBurger.price= '$2.99'
-print (ChickenBurger.price)
+print ("ChickenBurger.price: ", ChickenBurger.price)
 session.add(ChickenBurger)
 session.commit()

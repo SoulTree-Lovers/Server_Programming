@@ -3,6 +3,7 @@ import pymysql
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+# database_setup.py file에서 클래스를 가져옴.
 from database_setup import Restaurant, Base, MenuItem
 
 engine = create_engine('mysql+pymysql://root:root@localhost/restaurant')
@@ -10,6 +11,7 @@ engine = create_engine('mysql+pymysql://root:root@localhost/restaurant')
 # declaratives can be accessed through a DBSession instance
 Base.metadata.bind = engine
 
+# DBSession: class
 DBSession = sessionmaker(bind=engine)
 # A DBSession() instance establishes all conversations with the database
 # and represents a "staging zone" for all the objects loaded into the
@@ -18,16 +20,19 @@ DBSession = sessionmaker(bind=engine)
 # session.commit(). If you're not happy about the changes, you can
 # revert all of them back to the last commit by calling
 # session.rollback()
+
+# DBSession의 인스턴스 생성
 session = DBSession()
 
 
 # Menu for UrbanBurger
-restaurant1 = Restaurant(name="Urban Burger")
+restaurant1 = Restaurant(name="Urban Burger") # id는 생략 가능 (생략 시 자동 생성)
 
-# add: insert into (메모리에만 적재, 하드디스크에는 x) 
-session.add(restaurant1)
-# commit: 커밋 시 하드디스크에 적재
-session.commit()
+# add method: restaurant1 인스턴스를 받아 MySQL restaurant database의 restaurant table에 insert
+# insert into restaurant (name) values("Urban Burger"); 과 같은 의미
+session.add(restaurant1)    # add: insert into (메모리에만 적재, 하드디스크에는 x) 
+session.commit()            # commit: 커밋 시 하드디스크에 적재
+
 
 menuItem1 = MenuItem(name="Veggie Burger", description="Juicy grilled veggie patty with tomato mayo and lettuce",
                      price="$7.50", course="Entree", restaurant=restaurant1)

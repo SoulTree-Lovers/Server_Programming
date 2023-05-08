@@ -10,7 +10,6 @@ from sqlalchemy.orm import relationship
 
 from sqlalchemy import create_engine
 
-
 # declarative_base() : Table 생성을 위한 부모 class인 Base 생성하는 함수
 Base = declarative_base() 
 
@@ -19,6 +18,8 @@ class Restaurant(Base):
     __tablename__ = 'restaurant'
 
     # mapper
+    # primary key, Integer이면 id값은 insert에서 포함하지 않아도 자동으로 증가하도록
+    # SQL alchemy ORM library에서 setting (auto increment)
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
 
@@ -32,6 +33,9 @@ class MenuItem(Base):
     description = Column(String(250))
     price = Column(String(8))
     course = Column(String(250))
+
+    # restaurant_id 값은 외부에서 직접 받는 것이 아니라,
+    # restaurant 객체를 통해 간접적으로 받음.
     restaurant_id = Column(Integer, ForeignKey('restaurant.id'))
     restaurant = relationship(Restaurant)
 
@@ -40,5 +44,6 @@ class MenuItem(Base):
 ##### insert at end of file #####
 
 engine = create_engine('mysql+pymysql://root:root@localhost/restaurant') # restaurant은 데이터베이스 이름
+# engine = create_engine('mysql+pymysql://root:root@localhost') 
 
 Base.metadata.create_all(engine)

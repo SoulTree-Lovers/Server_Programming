@@ -20,9 +20,9 @@ DBSession = sessionmaker(bind=engine)
 # session.rollback()
 session = DBSession()
 
-# session.query(Restaurant) => select * from restaurant
-firstResult= session.query(Restaurant).first() # first() 첫 번째 레스토랑 인스턴스만 가져옴 (맞는 지 다시 확인해야 함)
-print ("first restaurant = " + firstResult.name + ", id = " + firstResult.id)
+# session.query(Restaurant).first() => select * from restaurant where 1st
+firstResult= session.query(Restaurant).first() # first() 첫 번째 레스토랑 인스턴스만 가져옴 
+print ("first restaurant = " + firstResult.name)
 print ("")
 
 # python lotsofmenus.py 실행후에,
@@ -31,6 +31,7 @@ for restaurant in restaurants: ## 실행하면 restaurant들이 보여짐
     print (restaurant.name)
 print ("")
 
+# select * from menu_item;
 items = session.query(MenuItem).all()
 for item in items: ## 실행하면 item들이 보여짐
     print (item.name)
