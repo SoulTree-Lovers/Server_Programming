@@ -1,0 +1,12 @@
+
+{% if latest_question_list %} <!-- context의 파라미터를 의미-->
+    <ul>
+    {% for question in latest_question_list %}
+        {% comment %} <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li> {% endcomment %}
+        <!--하드 코딩된 url을 아래와 같이 변수 형태로 변경: 추후 url 변경 작업 시 편리-->
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
