@@ -8,15 +8,16 @@ from django.urls import reverse
 from django.views import generic
 from .models import Question, Choice
 
-# html 태그 직접 적용하기
+
 # def index(request):
+#     """html 태그 직접 적용하기"""
 #     latest_question_list = Question.objects.order_by("-pub_date")[:5]
 #     output = ", ".join([q.question_text for q in latest_question_list])
 #     output = "<h1>" + output + "</h1>" # html tag 적용 가능 (하지만 일일이 적용하는 것은 어려움)
 #     return HttpResponse(output)
 
-# 템플릿 사용하기
 # def index(request):
+#     """템플릿 사용하기"""
 #     latest_question_list = Question.objects.order_by("-pub_date")[:5]
 #     template = loader.get_template("polls/index.html")
 #     context = {
@@ -24,8 +25,8 @@ from .models import Question, Choice
 #     }
 #     return HttpResponse(template.render(context, request))
 
-# generic view 사용하기
 class IndexView(generic.ListView):
+    """generic view 사용하기"""
     template_name = "polls/index.html"
     context_object_name = "latest_question_list"
 

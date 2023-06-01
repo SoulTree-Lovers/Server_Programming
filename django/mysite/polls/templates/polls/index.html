@@ -1,3 +1,6 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
 {% if latest_question_list %} <!-- context의 파라미터를 의미-->
     <ul>
